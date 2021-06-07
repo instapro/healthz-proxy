@@ -19,8 +19,15 @@ var port int
 var insecure bool
 var caFile, certFile, keyFile string
 
+func lookupEnvOrString(key string, defaultVal string) string {
+	if val, ok := os.LookupEnv(key); ok {
+		return val
+	}
+	return defaultVal
+}
+
 func init() {
-	flag.StringVar(&host, "host", "", "Host to start the proxy (default all interfaces)")
+	flag.StringVar(&host, "host", lookupEnvOrString("HOST", ""), "Host to start the proxy (default all interfaces)")
 	flag.IntVar(&port, "port", 8080, "Port to start the proxy")
 
 	flag.BoolVar(&insecure, "insecure", false, "Allow insecure server connections when using SSL")
