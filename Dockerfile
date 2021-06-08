@@ -1,6 +1,6 @@
-FROM golang:1.9-alpine AS builder
+FROM golang:1.16-alpine AS builder
 WORKDIR /usr/src/app
-COPY proxy.go .
+COPY go.mod proxy.go ./
 RUN go build -o proxy .
 
 FROM alpine:3.8
