@@ -1,7 +1,7 @@
-FROM golang:1.16-alpine AS builder
+FROM golang:1.20-alpine AS builder
 WORKDIR /usr/src/app
 COPY go.mod proxy.go ./
-RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -o proxy .
+RUN GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" -o proxy .
 
 FROM scratch
 USER nobody:nogroup
