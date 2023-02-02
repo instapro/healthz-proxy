@@ -6,8 +6,8 @@ Especially useful to publicly serve targets that are behind a firewall, or are i
 
 Usage:
 ```shell
-docker pull renang/healthz-proxy:latest
-docker run --publish 8080:8080 renang/healthz-proxy:latest http://numbersapi.com/42
+docker pull instapro/healthz-proxy:latest
+docker run --publish 8080:8080 instapro/healthz-proxy:latest http://numbersapi.com/42
 
 curl http://localhost:8080
 ```
